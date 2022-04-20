@@ -130,3 +130,49 @@ console.log(`Server start on port ${PORT}`);
 
 Если в миграции вы указываете, что какое-то поле _таблицы А_ ссылается на _Таблицу В_, то на момент накатывания миграции с _Таблицей А_, уже должна существовать _Таблица В_. В обратном случае, вы получите ошибку `Table_name is not exist`.
 
+## Работа в Express 
+
+### Router
+#### Подключение роутера
+
+Создаем новый файл в папке routes
+
+```JavaScript
+// в начале
+const express = require('express'
+const router = express.Router();
+
+// в конце добавляем 
+module.exports = router;
+```
+
+Нам нужно сказать нашим запросам, что если они начинаются с "name" они идут в роутер:
+
+Для этого в `app.js` используем middleware
+
+```JavaScript
+ // Не забываем подключить роутер в шапке
+ const nameRouter = require('./routes/name.router.js')
+ // Настраиваем  "переадресацию"
+ app.use('/name', nameRouter);   
+```
+
+#### Обработка запросов в роутере
+В роутере пишем 
+
+router.get('/',
+
+
+### Подключение модулей
+
+Через `app.set` в файле `app.js` задаем пары "ключ-значение" у `app`
+
+```JavaScript
+// Задает движок нашего отображения
+app.set('view engine', 'hbs');
+
+// Подключение бадипарсеров
+
+app.use(express.urlencoded({ extended: true })); // парсит тело запросов
+app.use(express.json()); //  позволяет обмениваться json - запросами
+```
