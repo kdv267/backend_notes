@@ -72,11 +72,46 @@ console.log(`Server start on port ${PORT}`);
 
 ## Создание базы данных
 
+1. Cоздаём файл `.sequelizerc`:
 
+```Javascript
+ const path = require('path');
+ module.exports = {
+ 'config': path.resolve('config', 'config.json'),
+ 'models-path': path.resolve('db', 'models'),
+ 'seeders-path': path.resolve('db', 'seeders'),
+ 'migrations-path': path.resolve('db', 'migrations')
+ };
+```
 
+2. Cоздаём структуру для работы с sequelize 
+ 
+  `npx sequelize-cli init` 
 
+3.  Создаем базу данных через Postgres 
 
+#### Основные консольные команды для Postgres. 
 
+`\l` - посмотреть все бд, которые есть.
+
+`CREATE USER Beb WITH PASSWORD '123'` - создание пользователя.
+
+`CREATE DATABASE "Films" OWNER beb` - создание БД !пользователь должен быть в lowerCase! 
+
+`\c Films beb` - подключение к Базе Данных.
+
+`\d` - показать все таблицы в БД. 
+
+4. Создаем подключение к базе данных. 
+
+4.1. В файле `config.json` изменить данные для БД (username, password, database, dialect) на свои. 
+
+4.2. Для того, чтобы sequelize следил за сидерами (не накатывались те сидеры, которые уже были добавлены в БД, аналогично миграциям),в файл `config.json` добавили строчки
+
+```
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "SequelizeData"
+```
 
 
 
