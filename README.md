@@ -113,6 +113,20 @@ console.log(`Server start on port ${PORT}`);
     "seederStorageTableName": "SequelizeData"
 ```
 
+5. Создаем модели, миграции, сидера
 
+ `npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string` - команда для создания Модели. 
+ 
+    - Одновременно с этим создалась миграция
+    - Если поменяли что-то в модели - меняем и в миграции 
+    
+  `npx sequelize-cli db:migrate` - команда для накатывания миграции. 
+  
+  `npx sequelize-cli seed:generate --name demo-user` - команда для создания seeder. 
+  
+    - Когда пишем seeder, поля createdAt и updatedAt нужно заполнить самому new Date()
 
+#### Связи 
+
+Если в миграции вы указываете, что какое-то поле _таблицы А_ ссылается на _Таблицу В_, то на момент накатывания миграции с _Таблицей А_, уже должна существовать _Таблица В_. В обратном случае, вы получите ошибку `Table_name is not exist`.
 
