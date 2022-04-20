@@ -172,7 +172,9 @@ router.get('/',
 app.set('view engine', 'hbs');
 
 // Подключение бадипарсеров
-
 app.use(express.urlencoded({ extended: true })); // парсит тело запросов
 app.use(express.json()); //  позволяет обмениваться json - запросами
+// Раздача статики
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public'))); // Позволяет браузеру получть доступ к файлам в папке  public (Нужно для клиентских скриптов, стилей и т.д.)
 ```
