@@ -49,7 +49,9 @@
 ```
 3. Устанавливаем модули Express, Sequelize, HBS, Morgan, Postgres 
 
-`npm i express sequelize hbs morgan pg pg-hstore` - команда для установки (лишнее убираем). 
+`npm i express sequelize hbs pg pg-hstore bcrypt express-session session-file-store bootstrap` - команда для установки (лишнее убираем). 
+
+`npm i dotenv --save` - команда локальной установки dotenv
 
 `npm i -D sequelize-cli` - команда для Sequelize-CLI. 
 
