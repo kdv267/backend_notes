@@ -86,6 +86,8 @@ console.log(`Server start on port ${PORT}`);
  };
 ```
 
+Если планируем использовать dotenv, то файл должен называться `config.js`
+
 2. Cоздаём структуру для работы с sequelize 
  
   `npx sequelize-cli init` 
